@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">f
+  <meta name="description" content="Đặt phòng tại GDU GRAND Hotel & Resort — khu nghỉ dưỡng nhiệt đới bên biển miền Trung.">
+  <title>GDU GRAND Hotel & Resort — Chạm vào nhịp nghỉ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <!-- SheetJS chạy trực tiếp trong trình duyệt, không cần npm hoặc bước build. -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" defer></script>
+  <script src="./data.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Đi đến nội dung chính</a>
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#trang-chu" aria-label="GDU GRAND Hotel & Resort - Trang chủ">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span><strong>GDU GRAND Hotel & Resort</strong><small>Hotel & Resort</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button>
+    <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+      <a href="#trang-chu">Trang chủ</a><a href="#phong-nghi">Phòng nghỉ</a><a href="#tien-ich">Tiện ích</a><a href="#cau-chuyen">Về chúng tôi</a><a href="#lien-he">Liên hệ</a>
+    </nav>
+    <a class="button button-small header-cta" href="#phong-nghi">Đặt phòng ngay</a>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="trang-chu" aria-labelledby="heroTitle">
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow light">Bên biển Cửa Đại · Hội An</p>
+        <h1 id="heroTitle">Một khoảng lặng<br>vừa đủ gần biển.</h1>
+        <p>Ẩn mình giữa vườn cọ và triền cát, GDU GRAND Hotel dành chỗ cho những sáng chậm rãi, bữa tối thật lâu và giấc ngủ sâu.</p>
+        <a class="text-link light-link" href="#phong-nghi">Khám phá phòng nghỉ <span aria-hidden="true">→</span></a>
+      </div>
+      <form class="search-bar" id="searchForm" aria-label="Tìm phòng trống">
+        <label><span>Nhận phòng</span><input type="date" id="searchCheckIn" name="checkIn" required></label>
+        <label><span>Trả phòng</span><input type="date" id="searchCheckOut" name="checkOut" required></label>
+        <label><span>Số khách</span><select id="searchGuests" name="guests"><option value="1">1 khách</option><option value="2" selected>2 khách</option><option value="3">3 khách</option><option value="4">4 khách</option><option value="5">5 khách</option><option value="6">6 khách</option></select></label>
+        <button class="button search-button" type="submit"><span>Tìm gợi ý</span><span class="spinner" aria-hidden="true"></span></button>
+        <p class="form-message search-message" id="searchMessage" role="status"></p>
+      </form>
+      <a class="scroll-cue" href="#cau-chuyen" aria-label="Cuộn xuống">Khám phá <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="intro section" id="cau-chuyen">
+      <div class="section-kicker"><span>01</span><p>Câu chuyện GDU GRAND</p></div>
+      <div class="intro-copy reveal">
+        <p class="eyebrow">Nghỉ giữa thiên nhiên, sống theo nhịp riêng</p>
+        <h2>Không cần đi thật xa<br>để thấy mình chậm lại.</h2>
+        <div class="copy-columns">
+          <p>GDU GRAND Hotel là một khu nghỉ nhỏ 10 hạng phòng bên bờ Cửa Đại. Kiến trúc thấp, vật liệu tự nhiên và những khoảng hiên rộng giúp nắng, gió biển đi qua từng căn phòng.</p>
+          <p>Chúng tôi giữ trải nghiệm gọn gàng: bữa sáng theo mùa, xe đạp ra phố cổ, hồ bơi nhìn biển và một đội ngũ luôn có mặt khi bạn cần.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rooms-section section" id="phong-nghi" aria-labelledby="roomsTitle">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Chọn nơi ở</p><h2 id="roomsTitle">Phòng cho mỗi nhịp nghỉ</h2></div>
+        <p>Từ căn phòng giữa vườn đến biệt thự sát biển, mỗi không gian có một góc nhìn riêng. Tình trạng thực tế sẽ được resort xác nhận sau khi nhận yêu cầu.</p>
+      </div>
+      <div class="filters" aria-label="Bộ lọc phòng">
+        <label>Loại phòng<select id="filterType"><option value="">Tất cả</option></select></label>
+        <label>Giá tối đa<select id="filterPrice"><option value="">Không giới hạn</option><option value="2500000">Đến 2,5 triệu</option><option value="5000000">Đến 5 triệu</option><option value="8000000">Đến 8 triệu</option></select></label>
+        <label>Số khách<select id="filterGuests"><option value="">Tất cả</option><option value="2">2 khách</option><option value="4">4 khách</option><option value="6">6 khách</option></select></label>
+        <label>Trạng thái<select id="filterStatus"><option value="">Tất cả</option><option value="Available">Đang nhận yêu cầu</option><option value="Maintenance">Đang bảo trì</option></select></label>
+        <label>Sắp xếp<select id="sortRooms"><option value="default">Đề xuất</option><option value="asc">Giá tăng dần</option><option value="desc">Giá giảm dần</option></select></label>
+        <button class="filter-reset" id="resetFilters" type="button">Xóa bộ lọc</button>
+      </div>
+      <div class="rooms-status" id="roomsStatus" role="status"><span class="spinner dark"></span> Đang tải phòng nghỉ...</div>
+      <div class="rooms-grid" id="roomsGrid"></div>
+      <div class="empty-state" id="emptyState" hidden><p class="eyebrow">Chưa tìm thấy</p><h3>Không có phòng phù hợp</h3><p>Hãy thử đổi ngày, số khách hoặc khoảng giá.</p><button class="button" id="emptyReset" type="button">Xem tất cả phòng</button></div>
+    </section>
+
+    <section class="amenities section" id="tien-ich">
+      <div class="amenities-image reveal"><img src="images/hero-resort.png" alt="Hồ bơi hướng biển tại GDU GRAND Hotel & Resort" loading="lazy"></div>
+      <div class="amenities-content reveal">
+        <p class="eyebrow">Một ngày tại GDU GRAND</p>
+        <h2>Đủ đầy,<br>không vội vàng.</h2>
+        <div class="amenity-list">
+          <article><span>01</span><div><h3>Hồ bơi vô cực</h3><p>Mở từ 6:00 đến 21:00, có khu vực nông cho trẻ.</p></div></article>
+          <article><span>02</span><div><h3>Bếp Mùa</h3><p>Thực đơn Việt theo mùa, ưu tiên nguyên liệu địa phương.</p></div></article>
+          <article><span>03</span><div><h3>Spa Vườn</h3><p>Bốn phòng trị liệu riêng nằm dưới tán cây bản địa.</p></div></article>
+          <article><span>04</span><div><h3>Đưa đón & xe đạp</h3><p>Xe sân bay theo lịch hẹn, xe đạp miễn phí vào phố cổ.</p></div></article>
+          <article><span>05</span><div><h3>Wi-Fi toàn khu</h3><p>Kết nối ổn định trong phòng và các không gian chung.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section section" aria-labelledby="galleryTitle">
+      <div class="section-heading compact"><div><p class="eyebrow">Những góc ở đây</p><h2 id="galleryTitle">Nắng đi qua từng khoảng hiên</h2></div></div>
+      <div class="gallery-grid">
+        <figure class="gallery-wide"><img src="images/room-pool.jpg" alt="Hồ bơi và hàng cọ" loading="lazy"></figure>
+        <figure><img src="images/room-garden.jpg" alt="Phòng nghỉ nhìn ra vườn" loading="lazy"></figure>
+        <figure><img src="images/room-ocean.jpg" alt="Không gian nghỉ hướng biển" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="contact section" id="lien-he">
+      <div><p class="eyebrow light">Lên kế hoạch cho chuyến đi</p><h2>Có điều gì bạn muốn hỏi<br>trước khi đặt phòng?</h2></div>
+      <div class="contact-details"><a href="tel:+842353929292">+84 235 392 9292</a><a href="mailto:hello@annhienresort.vn">hello@annhienresort.vn</a><p>Biển Cửa Đại, Hội An, Quảng Nam</p></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="brand footer-brand"><span class="brand-mark">A</span><span><strong>GDU GRAND</strong><small>Hotel & Resort</small></span></div>
+    <p>© <span id="currentYear"></span> GDU GRAND Hotel & Resort. Thông tin mẫu có thể chỉnh sửa.</p>
+    <div><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a></div>
+  </footer>
+
+  <div class="modal" id="roomModal" role="dialog" aria-modal="true" aria-labelledby="roomModalTitle" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel room-modal-panel" tabindex="-1">
+      <button class="modal-close" type="button" aria-label="Đóng" data-close-modal>×</button>
+      <div id="roomModalContent"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" hidden>
+    <div class="modal-backdrop" data-close-booking></div>
+    <div class="modal-panel booking-panel" tabindex="-1">
+      <button class="modal-close" type="button" aria-label="Đóng" data-close-booking>×</button>
+      <div class="booking-form-wrap">
+        <div><p class="eyebrow">Yêu cầu đặt phòng</p><h2 id="bookingTitle">Thông tin của bạn</h2></div>
+        <form id="bookingForm" novalidate>
+          <input type="hidden" id="bookingRoomId" name="roomId">
+          <div class="form-grid">
+            <label class="field full"><span>Họ và tên *</span><input id="guestName" name="guestName" autocomplete="name" required maxlength="100"><small class="field-error"></small></label>
+            <label class="field"><span>Số điện thoại *</span><input id="phone" name="phone" type="tel" autocomplete="tel" required><small class="field-error"></small></label>
+            <label class="field"><span>Email *</span><input id="email" name="email" type="email" autocomplete="email" required><small class="field-error"></small></label>
+            <label class="field"><span>Ngày nhận phòng *</span><input id="bookingCheckIn" name="checkIn" type="date" required><small class="field-error"></small></label>
+            <label class="field"><span>Ngày trả phòng *</span><input id="bookingCheckOut" name="checkOut" type="date" required><small class="field-error"></small></label>
+            <label class="field"><span>Số khách *</span><input id="bookingGuests" name="guests" type="number" min="1" required><small class="field-error"></small></label>
+            <label class="field full"><span>Yêu cầu đặc biệt</span><textarea id="specialRequest" name="specialRequest" rows="3" maxlength="500" placeholder="Ví dụ: giường em bé, đến muộn..."></textarea><small class="field-error"></small></label>
+          </div>
+          <p class="form-message" id="bookingMessage" role="alert"></p>
+          <button class="button submit-booking" type="submit"><span>Chuẩn bị yêu cầu</span><span class="spinner"></span></button>
+        </form>
+      </div>
+      <aside class="booking-summary" id="bookingSummary"></aside>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
